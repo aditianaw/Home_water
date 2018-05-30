@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Example Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>Data Depot</h1>
+
+<p><a href="/depot/new">Add new Depot</a></p>
+
+<?php
+if(count($depot) > 0):
+?>
+<table class="pure-table">
+    <tr>
+        <th>ID</th>
+		<th>Nama Depot </th>
+        <th>Depot Status</th>
+		<th>Aksi </th>
+      
+    </tr>
+
+<?php
+    $odd = true;
+    foreach($depot as $depot): ?>
+
+        <tr <?=$odd ? "class=\"pure-table-odd\"" : ""; ?>>
+        <td><?=$depot->getID() ?></td>
+        <td><?=$depot->getDepot() ?></td>
+		<td><?=$depot->getNama() ?></td>
+
+		<td>	
+		
+			<a href="<?=$router->pathFor('depot-detail', ['id' => $depot->getId()])?>">Detail</a>
+			<a href="<?=$router->pathFor('depot-update', ['id' => $depot->getId()])?>">Update</a>
+			<a href="/depot/<?=$depot->getId()?>/delete">Delete</a>
+		</td>
+        
+    </tr>
+
+<?php 
+    $odd = $odd ? false : true;
+    endforeach; ?>
+</table>
+<?php else: ?>
+<p>No current Component</p>
+<?php endif; ?>
+<?php require 'footer.php' ?>
+</body>
+</html>
+

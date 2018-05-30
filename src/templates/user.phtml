@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Example Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>Data Username</h1>
+
+<p><a href="/user/new">Add new Username</a></p>
+
+<?php
+if(count($user) > 0):
+?>
+<table class="pure-table">
+    <tr>
+        <th>Username</th>
+        <th>Password</th>
+		<th>Nama</th>
+		<th>Usertype</th>
+		<th>Aksi</th>
+    </tr>
+
+<?php
+    $odd = true;
+    foreach($user as $user): ?>
+
+        <tr <?=$odd ? "class=\"pure-table-odd\"" : ""; ?>>
+        <td><?=$user->getUsername() ?></td>
+        <td><?=$user->getPassword() ?></td>
+        <td><?=$user->getNama() ?></td>
+		<td><?=$user->getUsertype() ?></td>
+		<td>	
+				<a href="<?=$router->pathFor('user-detail', ['username' => $user->getUsername()])?>">Detail</a>
+				<a href="<?=$router->pathFor('user-update', ['username' => $user->getUsername()])?>">Update</a>
+				<a href="/user/<?=$user->getUsername()?>/delete">Delete</a>
+		</td>
+        
+    </tr>
+
+<?php 
+    $odd = $odd ? false : true;
+    endforeach; ?>
+</table>
+<?php else: ?>
+<p>No current Component</p>
+<?php endif; ?>
+<?php require 'footer.php' ?>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Homewater Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>New User</h1>
+
+<form class="pure-form" method="post" action="/user/new">
+    <label for="username">username</label>
+    <input name="username" id="username" type="text" size="60" /><br />
+
+    <label for="password">password</label>
+    <input name="password" id="password" type="text" size="60" /><br />
+	   
+	<label for="nama">nama</label>
+    <input name="nama" id="nama" type="text" size="60" /><br />
+   
+    <label for="usertype">usertype</label>
+    <input name="usertype" id="usertype" type="text" size="60" /><br />
+    
+	<input type="submit" class="pure-button" value="Create" />
+</form>
+<?php require 'footer.php' ?>
+</body>
+</html>
+
+

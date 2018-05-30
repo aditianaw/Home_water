@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Example Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>New Depot</h1>
+
+<form class="pure-form" method="get" action="/depot/<?=$depot->getId()?>/updat">
+    <label for="id" >ID</label>
+    <input name="id" id="id" type="text" size="60" value="<?=$depot->getId()?>" /><br />
+    <label for="nama">Nama Depot</label>
+       <input name="nama" id="nama" type="text" size="60"  value="<?=$depot->getNama()?>"/><br />
+	 <label for="depot">Depot</label>
+       <input name="depot" id="depot" type="text" size="60"  value="<?=$depot->getDepot()?>"/><br />
+    <input type="submit" class="pure-button" value="Update" />
+</form>
+<?php require 'footer.php' ?>
+</body>
+</html>
+
+

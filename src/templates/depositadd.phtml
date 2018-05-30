@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Example Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>New Deposit</h1>
+
+<form class="pure-form" method="post" action="/deposit/new">
+    <label for="waktu">Tanggal</label>
+    <input name="waktu" id="waktu" type="date" size="60" /><br />
+
+    <label for="nilai">Nilai</label>
+    <textarea name="nilai" id="nilai" rows="6" cols="80"></textarea><br />
+
+    <label for="depot">Nama Depot</label>
+    <select name="depot">
+        <option value=""></option>
+<?php
+foreach($depot as $depot): ?>
+    <option value="<?=$depot->getId()?>"><?=$depot->getDepot()?></option>
+<?php
+endforeach;
+?>
+    </select><br />
+
+    <input type="submit" class="pure-button" value="Create" />
+</form>
+<?php require 'footer.php' ?>
+</body>
+</html>
+
+

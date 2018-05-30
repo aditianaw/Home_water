@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Example Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>Data Deposit</h1>
+
+<p><a href="/deposit/new">Add new deposit</a></p>
+<?php
+if(count($deposit) > 0):
+?>
+<table class="pure-table">
+    <tr>
+        
+        <th>ID</th>
+        <th>Waktu</th>
+        <th>Nilai</th>
+        <th>Nama Depot</th>
+		<th>Aksi</th>
+    </tr>
+
+<?php
+    $odd = true;
+    foreach($deposit as $deposit): ?>
+
+        <tr <?=$odd ? "class=\"pure-table-odd\"" : ""; ?>>
+        <td><?=$deposit->getID() ?></td>
+		<td><?=$deposit->getWaktu() ?></td>
+        <td><?=$deposit->getNilai() ?></td>
+        <td><?=$deposit->getDepot() ?></td>
+		 <td>
+            <a href="<?=$router->pathFor('deposit-detail', ['id' => $deposit->getId()])?>">Detail</a>
+			<a href="/deposit/<?=$deposit->getId()?>/delete">Delete</a>
+        </td>
+       
+    </tr>
+
+<?php 
+    $odd = $odd ? false : true;
+    endforeach; ?>
+</table>
+<?php else: ?>
+<p>No current tickets</p>
+<?php endif; ?>
+<?php require 'footer.php' ?>
+</body>
+</html>
+
